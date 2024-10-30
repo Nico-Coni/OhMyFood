@@ -1,3 +1,128 @@
-h1 {
-    color: red;
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Shrikhand", sans-serif;
+}
+
+:root {
+    --main-color: #9356DC;
+    --second-color: #FF79DA;
+    --ter-color: #99E2D0;
+}
+
+p {
+    margin: 0px;
+}
+
+body {
+    margin: 0px;
+}
+
+@media (max-width : 768.98px) {
+
+    /****** Header ***********/
+
+    header {
+        position: relative;
+    }
+
+    .logo-header {
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        z-index: 2;
+        margin-bottom: 2px;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    .localisation {
+        display: flex;
+        font-size: 16px;
+        justify-content: center;
+        gap: 15px;
+        z-index: 1;
+        background-color: #EAEAEA;
+        padding: 15px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    /****** Exploration ***********/
+
+    .exploration {
+        background-color: #f6f6f6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .bold {
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .description {
+        font-weight: thin;
+        font-size: 18px;
+    }
+
+    .cta-explore {
+        color: white;
+        border: none;
+        border-radius: 20px;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 16px;
+        font-weight: medium;
+        background: linear-gradient(0deg, rgba(147, 86, 220, 1) 0%, rgba(255, 121, 218, 1) 100%);
+        box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    /****** Fonctionnement ***********/
+
+    .fonctionnement {
+        margin-left: 30px;
+    }
+
+    h1 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .etape {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        background-color: #f6f6f6;
+        border-radius: 20px;
+        box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
+        padding: 20px;
+        width: 80%;
+    }
+
+    .liste-etape .fa-solid {
+        color: #7e7e7e;
+    }
+
+    .liste-etape {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .liste-etape .fa-store {
+        color: #9356DC;
+    }
 }
