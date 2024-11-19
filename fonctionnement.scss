@@ -1,0 +1,57 @@
+.fonctionnement {
+    padding-left: 20px;
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+
+.fonctionnement__title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.fonctionnement__liste-etape .fa-solid {
+    color: #7e7e7e;
+}
+
+.fonctionnement__liste-etape {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-left: 15px;
+}
+
+.fonctionnement__liste-etape .fa-store {
+    color: var(--main-color);
+}
+
+.fonctionnement__liste-etape--box {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    background-color: #f6f6f6;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    margin-right: 20px;
+    width: 280px;
+}
+
+.fonctionnement__liste-etape--box-cercle {
+    background-color: var(--main-color);
+    border-radius: 50%;
+    width: 24px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    height: 24px;
+    margin-left: -31px;
+}
+
+@media (min-width: 1024px) {
+    .fonctionnement {
+        flex-direction: column;
+    }
+}

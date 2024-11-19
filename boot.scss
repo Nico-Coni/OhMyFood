@@ -1,0 +1,26 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --main-color: #9356DC;
+    --second-color: #FF79DA;
+    --ter-color: #99E2D0;
+}
+
+p {
+    margin: 0px;
+}
+
+body {
+    margin: 0px;
+}
+
+@media (min-width:1024px) {
+
+    main .fonctionnement,
+    main .restaurants {
+        display: flex;
+        justify-content: center;
+    }
+}
