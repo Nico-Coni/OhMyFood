@@ -29,6 +29,16 @@
     user-select: none;
 }
 
+.description__like::before {
+    content: "";
+    clip-path: circle(0% at 50% 50%);
+    transition: clip-path 0.4s ease-in-out;
+}
+
+input[type="checkbox"]:checked+.description__like::before {
+    clip-path: circle(150% att 50% 50%);
+}
+
 input[type="checkbox"] {
     opacity: 0;
     position: absolute;
@@ -45,6 +55,8 @@ input[type="checkbox"] {
     background: -webkit-linear-gradient(var(--main-color), var(--second-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: #ccc;
+
 }
 
 .fancy-checkbox input[type="checkbox"],
@@ -54,6 +66,7 @@ input[type="checkbox"] {
 
 .description__like input[type="checkbox"]:checked~.checked {
     display: inline-block;
+    top: 100%;
 }
 
 .description__like input[type="checkbox"]:checked~.unchecked {

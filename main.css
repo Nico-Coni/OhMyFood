@@ -16,6 +16,44 @@ body {
   margin: 0px;
 }
 
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 1s ease-out forwards;
+  animation-delay: 1s;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #9356DC;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fadeOut {
+  to {
+    opacity: 5%;
+    visibility: hidden;
+  }
+}
 @media (min-width: 1024px) {
   main .fonctionnement,
   main .restaurants {
@@ -52,6 +90,20 @@ body {
   user-select: none;
 }
 
+.description__like::before {
+  content: "";
+  -webkit-clip-path: circle(0% at 50% 50%);
+          clip-path: circle(0% at 50% 50%);
+  transition: -webkit-clip-path 0.4s ease-in-out;
+  transition: clip-path 0.4s ease-in-out;
+  transition: clip-path 0.4s ease-in-out, -webkit-clip-path 0.4s ease-in-out;
+}
+
+input[type=checkbox]:checked + .description__like::before {
+  -webkit-clip-path: circle(150% att 50% 50%);
+          clip-path: circle(150% att 50% 50%);
+}
+
 input[type=checkbox] {
   opacity: 0;
   position: absolute;
@@ -68,6 +120,7 @@ input[type=checkbox] {
   background: -webkit-linear-gradient(var(--main-color), var(--second-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: #ccc;
 }
 
 .fancy-checkbox input[type=checkbox],
@@ -77,6 +130,7 @@ input[type=checkbox] {
 
 .description__like input[type=checkbox]:checked ~ .checked {
   display: inline-block;
+  top: 100%;
 }
 
 .description__like input[type=checkbox]:checked ~ .unchecked {
@@ -302,6 +356,11 @@ header {
   flex-direction: column;
   gap: 10px;
   padding-bottom: 20px;
+}
+
+.footer__list a {
+  text-decoration: none;
+  color: #fff;
 }
 
 @media (min-width: 1024px) {

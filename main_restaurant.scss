@@ -61,24 +61,84 @@
     gap: 15px;
 }
 
-article {
+.description__plat {
+    font-size: 15px;
+}
+
+.nom__plat,
+.prix {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+h3 {
+    margin: 3px;
+
+}
+
+.menu-card {
     border-radius: 10px;
     background: #fff;
     box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
     width: 320px;
     padding: 10px;
+    position: relative;
+    overflow: hidden;
+
+    & .entre {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
-.description__plat {
+.plat {
+    width: 90%;
+}
+
+.prix {
+    width: 10%;
+}
+
+label .prix {
+    transition: transform 330ms ease-in-out;
     display: flex;
-    justify-content: space-between;
-    font-size: 15px;
+    align-items: flex-end;
 }
 
-.nom__plat,
-.description__plat span {
-    font-weight: bold;
-    font-size: 18px;
+.main__content .menu-card .check {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    color: white;
+    background-color: #99e2d0;
+    width: 59px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 12px 12px 0;
+    transition: transform 330ms ease-in-out;
+}
+
+.main__content .menu-card input[type=checkbox] {
+    display: none;
+}
+
+.main__content .menu-card input[type=checkbox]:checked+label .check {
+    transform: translateX(-58px);
+}
+
+.main__content .menu-card input[type=checkbox]:checked+label .prix {
+    transform: translateX(-58px);
+}
+
+.main__content .menu-card input[type=checkbox]:checked+label .description__plat {
+    width: 220px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .intro__cta {
