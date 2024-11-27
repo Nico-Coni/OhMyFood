@@ -54,13 +54,6 @@ body {
     visibility: hidden;
   }
 }
-@media (min-width: 1024px) {
-  main .fonctionnement,
-  main .restaurants {
-    display: flex;
-    justify-content: center;
-  }
-}
 .intro__cta {
   color: white;
   border: none;
@@ -77,66 +70,82 @@ body {
   opacity: 0.85;
 }
 
-.description__like {
-  display: block;
-  position: relative;
-  margin-right: 20px;
-  padding: 5px;
-  margin-top: 10px;
-  font-size: 22px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-.description__like::before {
-  content: "";
-  -webkit-clip-path: circle(0% at 50% 50%);
-          clip-path: circle(0% at 50% 50%);
-  transition: -webkit-clip-path 0.4s ease-in-out;
-  transition: clip-path 0.4s ease-in-out;
-  transition: clip-path 0.4s ease-in-out, -webkit-clip-path 0.4s ease-in-out;
-}
-
-input[type=checkbox]:checked + .description__like::before {
-  -webkit-clip-path: circle(150% att 50% 50%);
-          clip-path: circle(150% att 50% 50%);
-}
-
-input[type=checkbox] {
-  opacity: 0;
-  position: absolute;
-  height: 0;
-  width: 0;
-  cursor: pointer;
-}
-
-.description__like input:checked ~ .chekmark:after {
-  display: block;
-}
-
 .description__like .fa-solid {
-  background: -webkit-linear-gradient(var(--main-color), var(--second-color));
+  position: absolute;
+}
+
+.description__like .fa-regular {
+  position: relative;
+}
+
+.heart-icon,
+.heart-icon-solid {
+  font-size: 22px;
+}
+
+.description__like {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+}
+
+.heart-icon-solid {
+  transform-origin: bottom;
+  transform: scale(0);
+  background: linear-gradient(0deg, #9356DC 0%, #FF79DA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #ccc;
 }
 
-.fancy-checkbox input[type=checkbox],
-.description__like .checked {
+.like__checkbox {
   display: none;
 }
 
-.description__like input[type=checkbox]:checked ~ .checked {
-  display: inline-block;
-  top: 100%;
+.like__checkbox:checked + .description__like .heart-icon-solid {
+  animation: like 0.7s cubic-bezier(0.87, 0.01, 0.38, 1.01) forwards;
 }
 
-.description__like input[type=checkbox]:checked ~ .unchecked {
-  display: none;
+.like__checkbox:not(:checked) + .description__like .heart-icon-solid {
+  animation: unlike 0.75s 50ms ease forwards;
 }
 
+.like__checkbox:checked + .description__like .heart-icon {
+  animation: like--BG 1s ease forwards;
+}
+
+@keyframes like {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes like--BG {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes unlike {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
 /****** Header ***********/
 header {
   position: relative;
@@ -204,6 +213,11 @@ header {
   padding-bottom: 50px;
   padding-top: 20px;
 }
+.fonctionnement__desktop {
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+}
 
 .fonctionnement__title {
   font-family: "Roboto", sans-serif;
@@ -217,9 +231,9 @@ header {
 
 .fonctionnement__liste-etape {
   display: flex;
-  flex-wrap: wrap;
-  gap: 13px;
-  margin-left: 15px;
+  gap: 15px;
+  margin-left: 14px;
+  flex-direction: column;
 }
 
 .fonctionnement__liste-etape .fa-store {
@@ -253,29 +267,42 @@ header {
 
 @media (min-width: 1024px) {
   .fonctionnement {
-    flex-direction: column;
+    width: 1000px;
+    justify-self: center;
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+  .fonctionnement__liste-etape--box {
+    margin-right: 0px;
+    padding: 20px 12px 20px 20px;
+  }
+  .fonctionnement__liste-etape {
+    gap: 25px;
+    flex-direction: row;
   }
 }
 .restaurants {
   background-color: #f6f6f6;
   padding-bottom: 50px;
   flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 .restaurants__titre {
-  padding-left: 20px;
   padding-top: 30px;
 }
 
 .restaurant__list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
-  margin-left: 30px;
 }
 .restaurant__list a {
   color: #000;
   text-decoration: none;
+  width: 330px;
+  height: 241px;
 }
 
 .restaurant__list--card {
@@ -311,6 +338,11 @@ header {
   margin: 0px;
 }
 
+.btn__like {
+  align-content: center;
+  margin-right: 15px;
+}
+
 .restaurant__list--card .new {
   background: var(--ter-color);
   border-radius: 3px;
@@ -329,6 +361,21 @@ header {
   .restaurant__list--card img {
     -o-object-fit: cover;
        object-fit: cover;
+  }
+  .restaurant__list {
+    margin-left: 0px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .restaurant__list a {
+    width: 490px;
+  }
+  .restaurant__desktop {
+    justify-self: center;
+    width: 1000px;
+  }
+  .restaurants__titre {
+    padding-left: 0px;
   }
 }
 .footer {

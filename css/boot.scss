@@ -57,11 +57,4 @@ body {
     }
 }
 
-@media (min-width:1024px) {
-
-    main .fonctionnement,
-    main .restaurants {
-        display: flex;
-        justify-content: center;
-    }
-}
+@media (min-width:1024px) {}

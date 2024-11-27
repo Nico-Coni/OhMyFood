@@ -54,13 +54,6 @@ body {
     visibility: hidden;
   }
 }
-@media (min-width: 1024px) {
-  main .fonctionnement,
-  main .restaurants {
-    display: flex;
-    justify-content: center;
-  }
-}
 /****** Header ***********/
 header {
   position: relative;
@@ -112,66 +105,82 @@ header {
   opacity: 0.85;
 }
 
-.description__like {
-  display: block;
-  position: relative;
-  margin-right: 20px;
-  padding: 5px;
-  margin-top: 10px;
-  font-size: 22px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-.description__like::before {
-  content: "";
-  -webkit-clip-path: circle(0% at 50% 50%);
-          clip-path: circle(0% at 50% 50%);
-  transition: -webkit-clip-path 0.4s ease-in-out;
-  transition: clip-path 0.4s ease-in-out;
-  transition: clip-path 0.4s ease-in-out, -webkit-clip-path 0.4s ease-in-out;
-}
-
-input[type=checkbox]:checked + .description__like::before {
-  -webkit-clip-path: circle(150% att 50% 50%);
-          clip-path: circle(150% att 50% 50%);
-}
-
-input[type=checkbox] {
-  opacity: 0;
-  position: absolute;
-  height: 0;
-  width: 0;
-  cursor: pointer;
-}
-
-.description__like input:checked ~ .chekmark:after {
-  display: block;
-}
-
 .description__like .fa-solid {
-  background: -webkit-linear-gradient(var(--main-color), var(--second-color));
+  position: absolute;
+}
+
+.description__like .fa-regular {
+  position: relative;
+}
+
+.heart-icon,
+.heart-icon-solid {
+  font-size: 22px;
+}
+
+.description__like {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+}
+
+.heart-icon-solid {
+  transform-origin: bottom;
+  transform: scale(0);
+  background: linear-gradient(0deg, #9356DC 0%, #FF79DA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #ccc;
 }
 
-.fancy-checkbox input[type=checkbox],
-.description__like .checked {
+.like__checkbox {
   display: none;
 }
 
-.description__like input[type=checkbox]:checked ~ .checked {
-  display: inline-block;
-  top: 100%;
+.like__checkbox:checked + .description__like .heart-icon-solid {
+  animation: like 0.7s cubic-bezier(0.87, 0.01, 0.38, 1.01) forwards;
 }
 
-.description__like input[type=checkbox]:checked ~ .unchecked {
-  display: none;
+.like__checkbox:not(:checked) + .description__like .heart-icon-solid {
+  animation: unlike 0.75s 50ms ease forwards;
 }
 
+.like__checkbox:checked + .description__like .heart-icon {
+  animation: like--BG 1s ease forwards;
+}
+
+@keyframes like {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes like--BG {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes unlike {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
 .photo__restaurant img {
   width: 100%;
   background-size: cover;
@@ -198,6 +207,7 @@ input[type=checkbox] {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  width: 350px;
 }
 .nom__restaurant h1 {
   font-family: "Shrikhand", sans-serif;
@@ -236,6 +246,7 @@ input[type=checkbox] {
 
 .description__plat {
   font-size: 15px;
+  margin-left: 3px;
 }
 
 .nom__plat,
@@ -316,6 +327,56 @@ label .prix {
   margin: 40px;
 }
 
+.main__content .menu-card {
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  cursor: pointer;
+}
+
+.main__content .menu-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.main__content .menu-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.main__content .menu-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.main__content .menu-card:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+@media screen and (min-width: 570px) {
+  .photo__restaurant img {
+    height: 380px;
+    -o-object-position: center 60%;
+    object-position: center 60%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .menu-card {
+    width: 635px;
+  }
+  .main__content {
+    width: 1024px;
+    justify-self: center;
+  }
+  .main__content .menu-card input[type=checkbox]:checked + label .description__plat {
+    width: auto;
+  }
+}
 .footer {
   background-color: #353535;
   display: flex;

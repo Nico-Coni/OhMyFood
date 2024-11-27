@@ -2,6 +2,12 @@
     padding-left: 20px;
     padding-bottom: 50px;
     padding-top: 20px;
+
+    &__desktop {
+        display: flex;
+        justify-self: center;
+        flex-direction: column;
+    }
 }
 
 .fonctionnement__title {
@@ -16,9 +22,9 @@
 
 .fonctionnement__liste-etape {
     display: flex;
-    flex-wrap: wrap;
-    gap: 13px;
-    margin-left: 15px;
+    gap: 15px;
+    margin-left: 14px;
+    flex-direction: column;
 }
 
 .fonctionnement__liste-etape .fa-store {
@@ -52,6 +58,19 @@
 
 @media (min-width: 1024px) {
     .fonctionnement {
-        flex-direction: column;
+        width: 1000px;
+        justify-self: center;
+        padding-left: 0px;
+        margin-left: 0px;
+    }
+
+    .fonctionnement__liste-etape--box {
+        margin-right: 0px;
+        padding: 20px 12px 20px 20px;
+    }
+
+    .fonctionnement__liste-etape {
+        gap: 25px;
+        flex-direction: row;
     }
 }
