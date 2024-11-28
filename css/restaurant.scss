@@ -36,6 +36,7 @@
         height: 175px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
+        object-fit: cover;
     }
 }
 
@@ -47,7 +48,6 @@
 
 .description__text {
     font-size: 17px;
-    font-weight: thin;
     margin: 10px;
 }
 
