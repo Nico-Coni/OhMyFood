@@ -16,6 +16,41 @@ body {
   margin: 0px;
 }
 
+/****** Header ***********/
+header {
+  position: relative;
+}
+
+.header__logo {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 2px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.header__localisation {
+  display: flex;
+  font-size: 16px;
+  justify-content: center;
+  gap: 15px;
+  background-color: #EAEAEA;
+  padding: 15px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.fleche {
+  font-size: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.fleche a {
+  color: black;
+}
+
 #loader {
   position: fixed;
   top: 0;
@@ -54,41 +89,6 @@ body {
     visibility: hidden;
   }
 }
-/****** Header ***********/
-header {
-  position: relative;
-}
-
-.header__logo {
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 10px;
-  margin-bottom: 2px;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-}
-
-.header__localisation {
-  display: flex;
-  font-size: 16px;
-  justify-content: center;
-  gap: 15px;
-  background-color: #EAEAEA;
-  padding: 15px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-.fleche {
-  font-size: 20px;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-.fleche a {
-  color: black;
-}
-
 .intro__cta {
   color: white;
   border: none;
@@ -181,6 +181,11 @@ header {
     transform: scale(0);
   }
 }
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 .photo__restaurant img {
   width: 100%;
   background-size: cover;
@@ -270,11 +275,17 @@ h3 {
   padding: 10px;
   position: relative;
   overflow: hidden;
+  display: flex;
 }
-.menu-card .entre {
+.menu-card .btn__check {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  z-index: 2;
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  top: 5px;
 }
 
 .plat {
@@ -283,22 +294,20 @@ h3 {
 
 .prix {
   width: 10%;
-}
-
-label .prix {
   transition: transform 330ms ease-in-out;
-  display: flex;
-  align-items: flex-end;
+  position: relative;
+  top: 25px;
+  right: 15px;
 }
 
 .main__content .menu-card .check {
   position: absolute;
-  left: 100%;
-  top: 0;
+  left: 99%;
+  top: -5px;
   color: white;
   background-color: #99e2d0;
   width: 59px;
-  height: 100%;
+  height: 82%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -314,11 +323,11 @@ label .prix {
   transform: translateX(-58px);
 }
 
-.main__content .menu-card input[type=checkbox]:checked + label .prix {
+.main__content .menu-card input[type=checkbox]:checked ~ .prix {
   transform: translateX(-58px);
 }
 
-.main__content .menu-card input[type=checkbox]:checked + label .description__plat {
+.main__content .menu-card input[type=checkbox]:checked ~ .plat .description__plat {
   width: 220px;
   display: block;
   overflow: hidden;
@@ -372,9 +381,12 @@ label .prix {
   .menu-card {
     width: 635px;
   }
+  .menu-card .check {
+    left: 100%;
+  }
   .main__content {
     width: 1024px;
-    justify-self: center;
+    align-self: center;
   }
   .main__content .menu-card input[type=checkbox]:checked + label .description__plat {
     width: auto;
