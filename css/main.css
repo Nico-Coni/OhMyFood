@@ -208,12 +208,12 @@ header {
   }
 }
 .fonctionnement {
-  padding-left: 20px;
+  padding-left: 10px;
   padding-bottom: 50px;
   padding-top: 20px;
   display: grid;
   justify-content: center;
-  width: 100%;
+  width: 97%;
 }
 .fonctionnement__desktop {
   display: flex;

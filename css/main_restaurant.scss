@@ -116,7 +116,7 @@ h3 {
     transition: transform 330ms ease-in-out;
     position: relative;
     top: 25px;
-    right: 15px;
+    right: 0px;
 }
 
 .main__content .menu-card .check {
@@ -143,7 +143,7 @@ h3 {
 }
 
 .main__content .menu-card input[type=checkbox]:checked~.prix {
-    transform: translateX(-58px);
+    transform: translateX(-50px);
 }
 
 .main__content .menu-card input[type=checkbox]:checked~.plat .description__plat {
@@ -213,7 +213,14 @@ h3 {
         align-self: center;
     }
 
-    .main__content .menu-card input[type=checkbox]:checked+label .description__plat {
-        width: auto;
+    .main__content .menu-card input[type=checkbox]:checked~.plat .description__plat {
+        width: 400px;
     }
+
+    .prix {
+        right: -30px;
+    }
+
+
+
 }
